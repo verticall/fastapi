@@ -78,7 +78,7 @@ newman run senario_test.json -e env.json –delay-request 2000
 ## result test
 #### positive case
 ![alt](./positive.png)
-negative case
+#### negative case
 ![alt](./negative.png)
-Result test
+#### Result test
 ![alt](./test-result.png)
