@@ -68,7 +68,7 @@ http://0.0.0.0:8000/docs      # swagger url
 ![alt](./swagger.png)
 
 ## test senario
-test by postman (newman)
+#### test by postman (newman)
 ![alt](./senario_test.png)
 ## script test
 ```bash
@@ -76,7 +76,7 @@ test by postman (newman)
 newman run senario_test.json -e env.json –delay-request 2000
 ```
 ## result test
-positive case
+#### positive case
 ![alt](./positive.png)
 negative case
 ![alt](./negative.png)
