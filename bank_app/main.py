@@ -1,10 +1,12 @@
 from typing import List
 
-from fastapi import Depends, FastAPI, HTTPException
+from fastapi import Depends, FastAPI, HTTPException,Request
 from sqlalchemy.orm import Session
 
 from . import crud, models, schemas
 from .database import SessionLocal, engine
+
+import time
 
 
 models.Base.metadata.create_all(bind=engine)
@@ -20,6 +22,15 @@ def get_db():
         yield db
     finally:
         db.close()
+
+@app.middleware("http")
+async def add_process_time_header(request: Request, call_next):
+    # validation auth
+    start_time = time.time()
+    response = await call_next(request)
+    process_time = time.time() - start_time
+    response.headers["X-Process-Time"] = str(process_time)
+    return response
 
 
 # customer
